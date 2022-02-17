@@ -1,5 +1,6 @@
 import { Wrapper } from 'App.styles';
 import React, { useEffect, useState } from 'react';
+import { fetchCharacter } from 'utils/Api';
 
 import Card from './components/Card/Card';
 
@@ -11,12 +12,20 @@ const App: React.FunctionComponent = () => {
   useEffect(() => {
     const fetchFromApi = async () => {
       setIsLoading(true);
+      const result = await fetchCharacter(characterId);
+      setIsLoading(false);
+      setCharacter(result);
     };
+    fetchFromApi();
   }, [characterId]);
 
   return (
     <Wrapper>
-      <Card name="Michael" imgUrl="tbc" />
+      {isLoading ? (
+        <p>Api still loading...</p>
+      ) : (
+        <Card name={character.name} imgUrl={character.img_url} />
+      )}
     </Wrapper>
   );
 };

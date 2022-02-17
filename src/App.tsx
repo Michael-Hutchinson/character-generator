@@ -6,7 +6,7 @@ import Card from './components/Card/Card';
 const App: React.FunctionComponent = () => {
   return (
     <Wrapper>
-      <Card />
+      <Card name="Michael" imgUrl="tbc" />
     </Wrapper>
   );
 };

@@ -1,11 +1,12 @@
+import { Wrapper } from 'App.styles';
 import React from 'react';
 
-function App() {
+const App: React.FunctionComponent = () => {
   return (
-    <div className="App">
+    <Wrapper>
       <p>Hello</p>
-    </div>
+    </Wrapper>
   );
-}
+};
 
 export default App;

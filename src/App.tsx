@@ -1,13 +1,14 @@
 import { Wrapper } from 'App.styles';
 import React, { useEffect, useState } from 'react';
 import { Character, fetchCharacter } from 'utils/Api';
+import { useCharacterId } from 'utils/Context';
 
 import Card from './components/Card/Card';
 
 const App: React.FunctionComponent = () => {
   const [character, setCharacter] = useState<Character>({} as Character);
   const [isLoading, setIsLoading] = useState(false);
-  const [characterId, setCharacterId] = useState(1);
+  const { characterId, setCharacterId } = useCharacterId();
 
   useEffect(() => {
     const fetchFromApi = async () => {

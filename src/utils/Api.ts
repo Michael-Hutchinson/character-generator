@@ -2,6 +2,7 @@ export interface Character {
   id: number;
   name: string;
   img_url: string;
+  gender: string;
 }
 
 export const fetchCharacter = async (id: number): Promise<Character> => {

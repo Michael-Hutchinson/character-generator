@@ -20,7 +20,7 @@ const App: React.FunctionComponent = () => {
   }, [characterId]);
 
   return (
-    <Wrapper>
+    <Wrapper characterId={characterId}>
       {isLoading ? (
         <p>Api still loading...</p>
       ) : (

@@ -24,7 +24,12 @@ const App: React.FunctionComponent = () => {
       {isLoading ? (
         <p>Api still loading...</p>
       ) : (
-        <Card name={character.name} imgUrl={character.img_url} />
+        <>
+          <Card name={character.name} imgUrl={character.img_url} />
+          <button onClick={() => setCharacterId(Math.floor(Math.random() * 10) + 1)}>
+            Generate Character
+          </button>
+        </>
       )}
     </Wrapper>
   );

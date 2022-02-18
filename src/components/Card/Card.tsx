@@ -10,7 +10,7 @@ interface ICardProps {
 const Card: React.FunctionComponent<ICardProps> = ({ name, imgUrl }) => (
   <Wrapper>
     <p>{name}</p>
-    <p>{imgUrl}</p>
+    <img src={imgUrl} alt={name} />
   </Wrapper>
 );
 

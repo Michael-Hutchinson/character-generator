@@ -1,4 +1,5 @@
 import { Wrapper } from 'App.styles';
+import Item from 'components/Item/Item';
 import React, { useEffect, useRef, useState } from 'react';
 import { Character, fetchCharacter } from 'utils/Api';
 import { useCharacterId } from 'utils/Context';
@@ -36,6 +37,10 @@ const App: React.FunctionComponent = () => {
             name={character.name}
             imgUrl={character.img_url}
             gender={character.gender}
+          />
+          <Item<typeof character>
+            item={character}
+            onClick={(item) => console.log(item.gender)}
           />
           <input type="text" ref={inputRef} />
           <button onClick={handleButtonClick}>Generate Character</button>

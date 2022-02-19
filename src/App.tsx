@@ -1,5 +1,5 @@
 import { Wrapper } from 'App.styles';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Character, fetchCharacter } from 'utils/Api';
 import { useCharacterId } from 'utils/Context';
 
@@ -9,6 +9,7 @@ const App: React.FunctionComponent = () => {
   const [character, setCharacter] = useState<Character>({} as Character);
   const [isLoading, setIsLoading] = useState(false);
   const { characterId, setCharacterId } = useCharacterId();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const fetchFromApi = async () => {
@@ -19,6 +20,11 @@ const App: React.FunctionComponent = () => {
     };
     fetchFromApi();
   }, [characterId]);
+
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>): void => {
+    console.log(e.currentTarget);
+    setCharacterId(Number(inputRef.current?.value));
+  };
 
   return (
     <Wrapper characterId={characterId}>
@@ -31,9 +37,8 @@ const App: React.FunctionComponent = () => {
             imgUrl={character.img_url}
             gender={character.gender}
           />
-          <button onClick={() => setCharacterId(Math.floor(Math.random() * 10) + 1)}>
-            Generate Character
-          </button>
+          <input type="text" ref={inputRef} />
+          <button onClick={handleButtonClick}>Generate Character</button>
         </>
       )}
     </Wrapper>
